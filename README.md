@@ -4,9 +4,14 @@ Create simple web app using Ruby on Rails
 # TODO LISTS
 
 # LOGIN
-1. Create post /login route.
-2. Create login page.
-3. Implement logout.
+1. Install JWT
+2. Install Bcrypt
+3. Create User model
+4. Create Users controller
+5. Seed Users
+6. Create post /login route.
+7. Create login page.
+8. Implement logout.
 
 # TASKS
 1. Create Task Controller.
