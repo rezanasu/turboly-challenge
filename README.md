@@ -15,7 +15,7 @@ Create simple web app using Ruby on Rails
 
 # TASKS
 1. Create Task Controller.
-2. Create Task Model with Property (Title, Due Date, Description, Priority).
+2. Create Task Model with Property (Title, Due Date, Description, Priority, Status).
 3. Query find all Tasks => get /tasks route
 4. Query sort tasks by due_date, description, priority.
 5. Alert user to any tasks due today.
