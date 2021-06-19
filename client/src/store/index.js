@@ -9,7 +9,7 @@ export default new Vuex.Store({
   state: {
     isLogin: false,
     tasks: [],
-    task: {}
+    selectedTask: {}
   },
   mutations: {
     setLogin (state, payload) {
@@ -20,6 +20,9 @@ export default new Vuex.Store({
     },
     addTask (state, payload) {
       state.tasks.push(payload)
+    },
+    setSelectedTask (state, payload) {
+      state.selectedTask = payload
     }
   },
   actions: {
@@ -108,6 +111,42 @@ export default new Vuex.Store({
       })
       .catch(err => {
         console.log(err);
+      })
+    },
+    findTaskById (state, payload) {
+      axios({
+        method: "GET",
+        url: `/tasks/${payload.id}`,
+        headers: {Authorization: localStorage.getItem('access_token')}
+      })
+      .then(response => {
+        const getTask = response.data.task;
+        state.commit('setSelectedTask', getTask);
+        router.push("/edit");
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    },
+    editTask (state, payload) {
+      axios({
+        method: "PUT",
+        url: `/tasks/${payload.id}`,
+        headers: {Authorization: localStorage.getItem('access_token')},
+        data: {
+          title: payload.title,
+          description: payload.description,
+          priority: payload.priority,
+          status: payload.status,
+          dueDate: payload.dueDate
+        }
+      })
+      .then(response => {
+        console.log(response);
+        router.push("/")
+      })
+      .catch(err => {
+        console.log(err)
       })
     }
   },

@@ -24,7 +24,7 @@
             <td>{{task.priority}}</td>
             <td>{{task.status ? "completed" : "uncompleted"}}</td>
             <td>{{task.dueDate}}</td>
-            <td><button @click="updateStatus(task.id, task.status)" class="btn btn-primary btn-sm">UPDATE STATUS</button> <button class="btn btn-secondary btn-sm">EDIT</button> <button @click="deleteTask(task.id)" class="btn btn-sm btn-danger">DELETE</button></td>
+            <td><button @click="updateStatus(task.id, task.status)" class="btn btn-primary btn-sm">UPDATE STATUS</button> <button @click="handleEdit(task.id)" class="btn btn-secondary btn-sm">EDIT</button> <button @click="deleteTask(task.id)" class="btn btn-sm btn-danger">DELETE</button></td>
           </tr>
         </tbody>
       </table>
@@ -49,6 +49,11 @@ export default {
     },
     deleteTask (id) {
       this.$store.dispatch('deleteTask', {
+        id
+      })
+    },
+    handleEdit (id) {
+      this.$store.dispatch('findTaskById', {
         id
       })
     }

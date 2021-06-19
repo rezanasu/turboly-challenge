@@ -1,15 +1,15 @@
 <template>
-  <div class="container p-5">
-    <h1 class="text-center mb-3">ADD NEW TASK</h1>
-    <form @submit.prevent="handleAdd">
+  <div class="container">
+      <h1 class="text-center mb-3">EDIT TASK</h1>
+    <form @submit.prevent="handleEdit">
       <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input v-model="title" type="text" class="form-control" placeholder="Enter title..." />
+        <input v-model="task.title" type="text" class="form-control" placeholder="Enter title..." />
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Description</label>
         <input
-          v-model="description"
+          v-model="task.description"
           type="text"
           class="form-control"
           placeholder="Enter description..."
@@ -17,7 +17,7 @@
       </div>
       <div class="mb-3">
         <p>Priority</p>
-        <select v-model="priority" class="form-control">
+        <select v-model="task.priority" class="form-control">
           <option disabled selected>Open this select menu...</option>
           <option value="high">High</option>
           <option value="medium">Medium</option>
@@ -28,7 +28,7 @@
         <label for="status" class="form-label">Status</label>
         <div class="form-check">
           <input
-            v-model="status"
+            v-model="task.status"
             class="form-check-input"
             type="radio"
             name="exampleRadios"
@@ -42,7 +42,7 @@
         </div>
         <div class="form-check">
           <input
-            v-model="status"
+            v-model="task.status"
             class="form-check-input"
             type="radio"
             name="exampleRadios"
@@ -57,7 +57,7 @@
       <div class="mb-3">
         <label for="dueDate" class="form-label">Due Date</label>
         <input
-          v-model="dueDate"
+          v-model="task.dueDate"
           type="date"
           class="form-control"
         />
@@ -72,32 +72,31 @@
 
 <script>
 export default {
-  name: "Add",
-  data () {
-      return {
-        title: "",
-        description: "",
-        priority: "Open this select menu...",
-        status: "",
-        dueDate: ""
-      }
-  },
-  methods: {
-    handleAdd () {
-        this.$store.dispatch('addTask', {
-            title: this.title,
-            description: this.description,
-            priority: this.priority,
-            status: this.status,
-            dueDate: this.dueDate
-        })
+    name: 'Edit',
+    methods: {
+        handleEdit () {
+            console.log(this.task.title)
+            this.$store.dispatch('editTask', {
+                id: this.task.id,
+                title: this.task.title,
+                description: this.task.description,
+                priority: this.task.priority,
+                status: this.task.status,
+                dueDate: this.task.dueDate
+            })
+        },
+        toHome () {
+            this.$router.push("/")
+        }
     },
-    toHome () {
-        this.$router.push("/")
+    computed: {
+        task () {
+            return this.$store.state.selectedTask;
+        }
     }
-  }
-};
+}
 </script>
 
 <style>
+
 </style>

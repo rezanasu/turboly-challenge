@@ -33,6 +33,11 @@ Create simple web app using Ruby on Rails
 3. Create Login Page.
 4. Create Navigation Bar.
 5. Create Logout Button.
+6. HTTP Post Request to /login.
+7. Create Navigation Guard and insert access_token to localStorage.
+8. CRUD Tasks.
+9. Filter tasks by due_date, description, priority in UI.
+10. Send alert to user to show tasks that due today.
 
 # FRAMEWORK
 1. VueJS
