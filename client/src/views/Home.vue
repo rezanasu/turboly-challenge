@@ -24,7 +24,7 @@
             <td>{{task.priority}}</td>
             <td>{{task.status ? "completed" : "uncompleted"}}</td>
             <td>{{task.dueDate}}</td>
-            <td><button class="btn btn-primary btn-sm">UPDATE STATUS</button> <button class="btn btn-secondary btn-sm">EDIT</button> <button class="btn btn-sm btn-danger">DELETE</button></td>
+            <td><button @click="updateStatus(task.id, task.status)" class="btn btn-primary btn-sm">UPDATE STATUS</button> <button class="btn btn-secondary btn-sm">EDIT</button> <button @click="deleteTask(task.id)" class="btn btn-sm btn-danger">DELETE</button></td>
           </tr>
         </tbody>
       </table>
@@ -38,7 +38,19 @@ export default {
   methods: {
     toAdd () {
       this.$router.push("/add");
+    },
+    updateStatus (id, currentStatus) {
+      let newStatus = !currentStatus;
+
+      this.$store.dispatch('updateStatus', {
+        id,
+        status: newStatus
+      })
+    },
+    deleteTask (id) {
+      console.log(id)
     }
+    
   },
   computed: {
     tasks() {

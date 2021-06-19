@@ -8,7 +8,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLogin: false,
-    tasks: []
+    tasks: [],
+    task: {}
   },
   mutations: {
     setLogin (state, payload) {
@@ -50,7 +51,7 @@ export default new Vuex.Store({
       .then(response => {
         const result = response.data.tasks;
         state.commit('setTasks', result)
-        console.log(result);
+        
       })
       .catch(err => {
         console.log(err);
@@ -75,6 +76,36 @@ export default new Vuex.Store({
         const newTask = response.data.task;
         state.commit('addTask', newTask);
         router.push('/');
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    },
+    updateStatus (state, payload) {
+      axios({
+        method: "PATCH",
+        url: `/tasks/${payload.id}`,
+        headers: {Authorization: localStorage.getItem('access_token')},
+        data: {
+          status: payload.status
+        }
+      })
+      .then(() => {
+        state.dispatch('fetchTasks')
+      })
+      .catch(err => {
+        console.log(err);
+      })
+    },
+    deleteTask (state, payload) {
+      axios({
+        method: "DELETE",
+        url: `/tasks/${payload.id}`,
+        headers: {Authorization: localStorage.getItem('access_token')}
+      })
+      .then(() => {
+
+        state.dispatch('fetchTasks')
       })
       .catch(err => {
         console.log(err);
