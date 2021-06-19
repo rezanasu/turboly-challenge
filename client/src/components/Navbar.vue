@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-3">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <router-link class="navbar-brand" to="/">TODO</router-link>
@@ -15,7 +15,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse border border-primary border-3" id="navbarColor01">
+        <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto">
             <li class="nav-item">
               <router-link class="nav-link" to="/">Home</router-link>
