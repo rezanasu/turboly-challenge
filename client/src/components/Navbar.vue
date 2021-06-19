@@ -25,7 +25,7 @@
             </li>
           </ul>
         </div>
-        <button class="btn btn-danger">LOGOUT</button>
+        <button class="btn btn-danger" @click="logout">LOGOUT</button>
       </div>
     </nav>
   </div>
@@ -34,6 +34,13 @@
 <script>
 export default {
   name: "Navbar",
+  methods: {
+    logout () {
+        localStorage.clear();
+        this.$store.commit('setLogin', false)
+        this.$router.push('/login')
+    } 
+  }
 };
 </script>
 

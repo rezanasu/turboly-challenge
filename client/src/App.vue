@@ -18,11 +18,11 @@ export default {
     }
   },
   created () {
-      if (localStorage.getItem('access_token')) {
-          this.$store.commit('setLogin', true)
-      } else {
-          this.$store.commit('setLogin', false)
-      }
+    if (localStorage.getItem('access_token')) {
+      this.$store.commit('setLogin', true)
+    } else {
+      this.$store.commit('setLogin', false)
+    }
   }
 }
 </script>
