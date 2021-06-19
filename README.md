@@ -3,6 +3,8 @@ Create simple web app using Ruby on Rails
 
 # TODO LISTS
 
+### BACKEND
+
 # LOGIN
 1. Install JWT
 2. Install Bcrypt
@@ -19,6 +21,11 @@ Create simple web app using Ruby on Rails
 3. Query find all Tasks => get /tasks route
 4. Query sort tasks by due_date, description, priority.
 5. Alert user to any tasks due today.
+
+### FRONTEND
+1. Create Login Page.
+2. Create Home Page.
+
 
 # FRAMEWORK
 1. VueJS

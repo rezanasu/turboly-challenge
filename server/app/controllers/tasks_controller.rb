@@ -22,13 +22,17 @@ class TasksController < ApplicationController
 
     # Update
     def update
-        puts "masukk dong #{params[:id]}"
+        @task = Task.find(params[:id])
+        puts "masukk dong #{params[:task]}"
+        @task.update(task_params)
+        render json: {updatedTask: @task}
     end
 
     # Private method
 
     private
-    def task_params
-        
-    end
+    
+        def task_params
+            params.permit(:title, :description, :dueDate, :priority, :status)
+        end
 end
