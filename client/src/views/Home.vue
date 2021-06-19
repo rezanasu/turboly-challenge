@@ -48,7 +48,9 @@ export default {
       })
     },
     deleteTask (id) {
-      console.log(id)
+      this.$store.dispatch('deleteTask', {
+        id
+      })
     }
     
   },

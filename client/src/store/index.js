@@ -104,7 +104,6 @@ export default new Vuex.Store({
         headers: {Authorization: localStorage.getItem('access_token')}
       })
       .then(() => {
-
         state.dispatch('fetchTasks')
       })
       .catch(err => {
