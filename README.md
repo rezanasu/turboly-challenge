@@ -28,6 +28,8 @@ Create simple web app using Ruby on Rails
 8. Install moment.js
 9. Alert user to any tasks due today.
 
+Deploy Heroku
+
 ### FRONTEND
 
 1. Draw Templates.
@@ -40,7 +42,9 @@ Create simple web app using Ruby on Rails
 8. CRUD Tasks.
 9. Order tasks by due_date, description, priority in UI.
 10. Create Due Today Page.
-11. Send alert to user to show tasks that due today.
+11. Show alert to user to show tasks that due today.
+
+Deploy Firebase
 
 # FRAMEWORK
 1. VueJS

@@ -131,6 +131,7 @@ export default new Vuex.Store({
       })
       .then(() => {
         state.dispatch('fetchTasks')
+        state.dispatch('fetchDeadlines')
       })
       .catch(err => {
         console.log(err);

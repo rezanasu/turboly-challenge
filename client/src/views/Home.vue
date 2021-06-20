@@ -1,6 +1,10 @@
 <template>
   <div class="container-fluid">
     <h1 class="text-center mb-3 p-3">TASKS LIST</h1>
+    <div v-if="deadlines.length !== 0" class="alert alert-dismissible alert-warning p-3">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <strong>You Have {{deadlines.length}} Tasks due today. Please check deadlines for more details...</strong>
+    </div>
     <div class="d-flex justify-content-between p-3 mb-3">
       <button class="btn btn-success" @click="toAdd">ADD NEW TASK</button>
       <form>
@@ -88,9 +92,13 @@ export default {
     tasks() {
       return this.$store.state.tasks;
     },
+    deadlines() {
+      return this.$store.state.deadlines;
+    }
   },
   created() {
     this.$store.dispatch("fetchTasks");
+    this.$store.dispatch("fetchDeadlines");
   },
 };
 </script>

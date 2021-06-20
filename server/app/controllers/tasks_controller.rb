@@ -36,7 +36,7 @@ class TasksController < ApplicationController
 
     # Find all due today tasks
     def deadline
-        tasks = Task.where('"dueDate" =?', Date.today)
+        tasks = Task.where('"dueDate" =?', Date.today).where("user_id=?", @user.id)
         render json: {tasks: tasks}
     end
 
