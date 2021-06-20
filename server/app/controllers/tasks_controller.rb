@@ -34,6 +34,12 @@ class TasksController < ApplicationController
         render json: {task: task}
     end
 
+    # Find all due today tasks
+    def deadline
+        tasks = Task.where('"dueDate" =?', Date.today)
+        render json: {tasks: tasks}
+    end
+
     # Update
     def update
         @task = Task.find(params[:id])

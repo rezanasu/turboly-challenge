@@ -23,6 +23,9 @@
             <li class="nav-item">
               <router-link class="nav-link" to="/add">Add Task</router-link>
             </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/deadlines">Deadlines</router-link>
+            </li>
           </ul>
         </div>
         <button class="btn btn-danger" @click="logout">LOGOUT</button>

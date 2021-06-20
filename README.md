@@ -24,7 +24,9 @@ Create simple web app using Ruby on Rails
 4. Add new task => post /tasks route
 5. Update existing task => patch /tasks route
 6. Query sort tasks by due_date, description, priority in UI. (using Query params)
-7. Alert user to any tasks due today.
+7. Find all any tasks due today.
+8. Install moment.js
+9. Alert user to any tasks due today.
 
 ### FRONTEND
 
@@ -37,7 +39,8 @@ Create simple web app using Ruby on Rails
 7. Create Navigation Guard and insert access_token to localStorage.
 8. CRUD Tasks.
 9. Order tasks by due_date, description, priority in UI.
-10. Send alert to user to show tasks that due today.
+10. Create Due Today Page.
+11. Send alert to user to show tasks that due today.
 
 # FRAMEWORK
 1. VueJS

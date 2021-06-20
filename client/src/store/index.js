@@ -10,7 +10,8 @@ export default new Vuex.Store({
     isLogin: false,
     tasks: [],
     selectedTask: {},
-    sortBy: 'created_at'
+    sortBy: 'created_at',
+    deadlines: []
   },
   mutations: {
     setLogin (state, payload) {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     },
     setSortBy (state, payload) {
       state.sortBy = payload
+    },
+    setDeadlines (state, payload) {
+      state.deadlines = payload
     }
   },
   actions: {
@@ -63,6 +67,20 @@ export default new Vuex.Store({
       })
       .catch(err => {
         console.log(err);
+      })
+    },
+    fetchDeadlines(context) {
+      axios({
+        method: "GET",
+        url: "/deadlines",
+        headers: {Authorization: localStorage.getItem('access_token')}
+      })
+      .then(response => {
+        const deadlines = response.data.tasks
+        context.commit('setDeadlines', deadlines)
+      })
+      .catch(err => {
+        console.log(err)
       })
     },
     addTask(state, payload) {

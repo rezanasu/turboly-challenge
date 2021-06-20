@@ -43,7 +43,7 @@
               <span v-if="task.status" class="badge bg-success rounded-pill">completed</span>
               <span v-else class="badge bg-danger rounded-pill">uncompleted</span>
             </td>
-            <td>{{task.dueDate}}</td>
+            <td>{{moment(task.dueDate).format('LL')}}</td>
             <td><button @click="updateStatus(task.id, task.status)" class="btn btn-primary btn-sm">CHANGE STATUS</button> <button @click="handleEdit(task.id)" class="btn btn-secondary btn-sm">EDIT</button> <button @click="deleteTask(task.id)" class="btn btn-sm btn-danger">DELETE</button></td>
           </tr>
         </tbody>
