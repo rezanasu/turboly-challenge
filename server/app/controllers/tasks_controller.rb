@@ -43,7 +43,6 @@ class TasksController < ApplicationController
     # Update
     def update
         @task = Task.find(params[:id])
-        puts "masukk dong #{params[:task]}"
         @task.update(task_params)
         render json: {updatedTask: @task}
     end
