@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.string :title
       t.string :description
       t.date :dueDate
-      t.string :priority
+      t.integer :priority
       t.boolean :status
       t.belongs_to :user
 

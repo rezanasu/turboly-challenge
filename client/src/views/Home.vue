@@ -1,8 +1,20 @@
 <template>
   <div class="container-fluid">
-    <div class="d-flex justify-content-center p-3 mb-3">
+    <h1 class="text-center mb-3 p-3">TASKS LIST</h1>
+    <div class="d-flex justify-content-between p-3 mb-3">
       <button class="btn btn-success" @click="toAdd">ADD NEW TASK</button>
+      <form>
+        <select @change="sortTask($event)" class="form-select">
+          <option disabled selected>Sort by...</option>
+          <option value="created_at">Created At</option>
+          <option value="dueDate">Due Date</option>
+          <option value="description">Description</option>
+          <option value="priority">Priority</option>
+        </select>
+        
+      </form>
     </div>
+    <hr>
     <div class="p-3 table-responsive">
       <table class="table table-striped table-hover">
         <thead class="thead-dark">
@@ -21,10 +33,18 @@
             <th scope="row">{{index+1}}</th>
             <td>{{task.title}}</td>
             <td>{{task.description}}</td>
-            <td>{{task.priority}}</td>
-            <td>{{task.status ? "completed" : "uncompleted"}}</td>
+            <td>
+              <span v-if="task.priority === 1">High</span>
+              <span v-else-if="task.priority === 2">Medium</span>
+              <span v-else-if="task.priority === 3">Low</span>
+              <span v-else>Low</span>
+            </td>
+            <td>
+              <span v-if="task.status" class="badge bg-success rounded-pill">completed</span>
+              <span v-else class="badge bg-danger rounded-pill">uncompleted</span>
+            </td>
             <td>{{task.dueDate}}</td>
-            <td><button @click="updateStatus(task.id, task.status)" class="btn btn-primary btn-sm">UPDATE STATUS</button> <button @click="handleEdit(task.id)" class="btn btn-secondary btn-sm">EDIT</button> <button @click="deleteTask(task.id)" class="btn btn-sm btn-danger">DELETE</button></td>
+            <td><button @click="updateStatus(task.id, task.status)" class="btn btn-primary btn-sm">CHANGE STATUS</button> <button @click="handleEdit(task.id)" class="btn btn-secondary btn-sm">EDIT</button> <button @click="deleteTask(task.id)" class="btn btn-sm btn-danger">DELETE</button></td>
           </tr>
         </tbody>
       </table>
@@ -56,6 +76,11 @@ export default {
       this.$store.dispatch('findTaskById', {
         id
       })
+    },
+    sortTask (event) {
+      const sortBy = event.target.value
+      this.$store.commit('setSortBy', sortBy);
+      this.$store.dispatch("fetchTasks");
     }
     
   },

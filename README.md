@@ -23,7 +23,7 @@ Create simple web app using Ruby on Rails
 3. Query find all Tasks => get /tasks route
 4. Add new task => post /tasks route
 5. Update existing task => patch /tasks route
-6. Query sort tasks by due_date, description, priority in UI.
+6. Query sort tasks by due_date, description, priority in UI. (using Query params)
 7. Alert user to any tasks due today.
 
 ### FRONTEND
@@ -36,7 +36,7 @@ Create simple web app using Ruby on Rails
 6. HTTP Post Request to /login.
 7. Create Navigation Guard and insert access_token to localStorage.
 8. CRUD Tasks.
-9. Filter tasks by due_date, description, priority in UI.
+9. Order tasks by due_date, description, priority in UI.
 10. Send alert to user to show tasks that due today.
 
 # FRAMEWORK

@@ -16,7 +16,15 @@ class TasksController < ApplicationController
 
     # Find All
     def index
-        tasks = Task.where("user_id=?", @user.id)
+        puts "#{params[:sortBy]} <<<<< INI QUERY PARAMS"
+        @sortParam = params[:sortBy]
+        
+        if !@sortParam or @sortParam === ""
+          @sortParam = 'created_at'
+        elsif @sortParam === "dueDate"
+          @sortParam = '"dueDate"'
+        end
+        tasks = Task.order(@sortParam).where("user_id=?", @user.id)
         render json: {tasks: tasks}
     end
 

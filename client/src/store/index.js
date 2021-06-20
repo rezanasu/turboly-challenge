@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     isLogin: false,
     tasks: [],
-    selectedTask: {}
+    selectedTask: {},
+    sortBy: 'created_at'
   },
   mutations: {
     setLogin (state, payload) {
@@ -23,6 +24,9 @@ export default new Vuex.Store({
     },
     setSelectedTask (state, payload) {
       state.selectedTask = payload
+    },
+    setSortBy (state, payload) {
+      state.sortBy = payload
     }
   },
   actions: {
@@ -45,15 +49,16 @@ export default new Vuex.Store({
         console.log(err);
       })
     },
-    fetchTasks(state) {
+    fetchTasks(context) {
+      console.log(context.state.sortBy)
       axios({
         method: "GET",
-        url: "/tasks",
+        url: `/tasks?sortBy=${context.state.sortBy}`,
         headers: {Authorization: localStorage.getItem('access_token')}
       })
       .then(response => {
         const result = response.data.tasks;
-        state.commit('setTasks', result)
+        context.commit('setTasks', result)
         
       })
       .catch(err => {

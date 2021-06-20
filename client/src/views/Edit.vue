@@ -17,11 +17,11 @@
       </div>
       <div class="mb-3">
         <p>Priority</p>
-        <select v-model="task.priority" class="form-control">
+        <select v-model="task.priority" class="form-select">
           <option disabled selected>Open this select menu...</option>
-          <option value="high">High</option>
-          <option value="medium">Medium</option>
-          <option value="low">Low</option>
+          <option value="1">High</option>
+          <option value="2">Medium</option>
+          <option value="3">Low</option>
         </select>
       </div>
       <div class="mb-3">

@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2021_06_19_020105) do
     t.string "title"
     t.string "description"
     t.date "dueDate"
-    t.string "priority"
+    t.integer "priority"
     t.boolean "status"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
